@@ -1,13 +1,35 @@
-<h2>Media Servers</h2>
+<div class="splash-screen" #splashScreen>
+
+  <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"
+  (tap)="splashScreen.classList.add('display-none')"
+  >
+  <p  (tap)="splashScreen.classList.add('display-none')"> Ignorer </p>
+
+  </span>
+</div>
+
+<section class="media-servers">
+  <h2>Media Servers</h2>
 
 <m1m-media-browser [devices]="mediaServers">
-  <!-- ici est chargé le template m1m-media-browser.html -->
+  <!-- ici est char(gé le template m1m-media-browser.html -->
 </m1m-media-browser>
+</section>
 
-<hr />
+<!--<hr>-->
 
-<h2>Media Renderers</h2>
+<section class="media-players" #renderers>
+    <h2 (tap)="renderers.classList.toggle('slideTop');">Media Renderers</h2>
 
-<m1m-media-renderer *ngFor="let renderer of mediaRenderers" [nf]="renderer">
-<!-- ici est chargé le template m1m-mdia-renderer.html autant de fois qu'il y a de renderers (boucle *ngfor) -->
-</m1m-media-renderer>
+<!--    $('h2').on('tap',function() {}
+      $('#renderers').toggleClass('slidetop')
+})
+
+évènements disponibles : tap / presse / click / swipeleft / swipeRight
+Fonction : toggle, add, remove
+-->
+
+    <m1m-media-renderer *ngFor="let renderer of mediaRenderers" [nf]="renderer">
+    <!-- ici est chargé le template m1m-mdia-renderer.html autant de fois qu'il y a de renderers (boucle *ngfor) -->
+    </m1m-media-renderer>
+</section>

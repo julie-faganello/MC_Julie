@@ -15,12 +15,21 @@
          </span>
     </header>
 
+
     <!-- Liste des serveurs -->
-    <section class="servers-list" *ngIf="!ms">
+    <section class="servers-list" *ngIf="!ms" #serverslist>
+      <div class="navigation">
+        <div class="glyphicon glyphicon-chevron-left" aria-hidden="true" (tap)="serverslist.classList.toggle('slide-left');"></div>
+        <div class="glyphicon glyphicon-chevron-right" aria-hidden="true" (tap)="serverslist.classList.toggle('slide-right');"></div>
+      </div>
+
         <!-- le bloc ci-dessous est affiché autant de fois qu'il y a de serveurs -->
-        <p *ngFor="let server of devices" (click)="browseMediaServer(server)" class="server">
-                • {{server.name }}
-        </p>
+        <section>
+            <p *ngFor="let server of devices" (click)="browseMediaServer(server)" class="server">
+                {{server.name }}
+            </p>
+        </section>
+
     </section>
 
     <!-- cette section affiche le contenu des serveurs : des dossiers (directories) ou des médias (medias) -->
